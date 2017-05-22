@@ -218,6 +218,10 @@ public:
 		}
 
 	};
+	
+	void ExecuteOnTrade(){
+      Base::ExecuteOnTradeBase();
+   };
 
 };
 
