@@ -144,11 +144,7 @@ private:
 	}
 
 	bool GetBuffers() {
-
-		if (!IsNewCandle()) {
-			return ArraySize(_rates) > 0;
-		}
-
+	
 		ZeroMemory(_rates);
 		ArraySetAsSeries(_rates, true);
 		ArrayFree(_rates);
