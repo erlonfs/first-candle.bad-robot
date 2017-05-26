@@ -209,7 +209,6 @@ public:
 			}
 
 			SetInfo("COMPRA " + (string)_maxima + " VENDA " + (string)_minima);
-			ShowInfo();
 
 		}
 
