@@ -7,5 +7,3 @@ Que tal entrar no rompimento da maxima do primeiro candle de 5min? é possivel! 
 ![tester_estrategy](assets/tester/first_candle_test.gif)
 
 
-
-
