@@ -21,8 +21,7 @@ private:
 	double _maxima;
 	double _minima;
 
-	bool _waitBuy;
-	bool _waitSell;
+	bool _wait;
 	int _qtdCopiedRates;
 
 	//Grafico 	   
@@ -43,7 +42,7 @@ private:
 			if (GetPrice().last >= _entrada) {
 
 				if (!HasPositionOpen()) {
-					_waitBuy = false;
+					_wait = false;
 					Buy(_entrada, _auxStopLoss, _auxStopGain, getRobotName());
 				}
 
@@ -63,7 +62,7 @@ private:
 			if (GetPrice().last <= _entrada) {
 
 				if (!HasPositionOpen()) {
-					_waitSell = false;
+					_wait = false;
 					Sell(_entrada, _auxStopLoss, _auxStopGain, getRobotName());
 				}
 
@@ -200,7 +199,10 @@ public:
 			ClearDraw(_maxima);
 			ClearDraw(_minima);
 
-			if (FindCondition()) {
+			if (_wait || FindCondition()) {
+			   
+			   _wait = true;
+			
 				Draw(_minima, _corSell);
 				Draw(_maxima, _corBuy);
 
