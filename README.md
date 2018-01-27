@@ -1,4 +1,4 @@
-# mt5-first-candle-robot
+# first-candle.bad-robot
 
 Este setup é um classico, consiste em pegar o primeiro candle de hora do dia e marcar sua maxima para entrar na compra caso seja rompida e 
 sua minima para o mesmo porem na venda. Porem com esse robot é possivel determinar qualquer tempo grafico, não entendeu?
