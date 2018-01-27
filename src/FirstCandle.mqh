@@ -8,9 +8,9 @@
 
 #include <Trade\Trade.mqh>
 #include <Trade\PositionInfo.mqh>
-#include <Framework\Base.mqh>
+#include <BadRobot.Framework\BadRobot.mqh>
 
-class FirstCandle : public Base
+class FirstCandle : public BadRobot
 {
 private:
 	//Price   		
@@ -192,7 +192,7 @@ public:
 
 	void Execute() {
 
-		if(!Base::ExecuteBase()) return;
+		if(!BadRobot::ExecuteBase()) return;
 
 		if (GetBuffers()) {
 
@@ -217,7 +217,7 @@ public:
 	};
 	
 	void ExecuteOnTrade(){
-      Base::ExecuteOnTradeBase();
+      BadRobot::ExecuteOnTradeBase();
    };
 
 };
