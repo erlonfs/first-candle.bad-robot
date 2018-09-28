@@ -8,9 +8,9 @@
 
 #include <Trade\Trade.mqh>
 #include <Trade\PositionInfo.mqh>
-#include <BadRobot.Framework\BadRobot.mqh>
+#include <BadRobot.Framework\BadRobotUI.mqh>
 
-class FirstCandle : public BadRobot
+class FirstCandle : public BadRobotUI
 {
 private:
 	//Price   		
@@ -37,7 +37,7 @@ private:
 
 			double _entrada = _maxima + GetSpread();			
 
-			if (GetPrice().last >= _entrada) {
+			if (GetLastPrice() >= _entrada) {
 
 				if (!HasPositionOpen()) {
 					_wait = false;
@@ -55,7 +55,7 @@ private:
 
 			double _entrada = _minima - GetSpread();
 
-			if (GetPrice().last <= _entrada) {
+			if (GetLastPrice() <= _entrada) {
 
 				if (!HasPositionOpen()) {
 					_wait = false;
@@ -88,7 +88,7 @@ private:
 					isMatch = false;
 				}
 
-				if (GetPrice().last > _maxima + GetSpread() || GetPrice().last < _minima - GetSpread()) {
+				if (GetLastPrice() > _maxima + GetSpread() || GetLastPrice() < _minima - GetSpread()) {
 					isMatch = false;
 				}
 
@@ -183,12 +183,12 @@ public:
 	};
 
 	void Load() {
-
+      LoadBase();
 	};
 
 	void Execute() {
 
-		if(!BadRobot::ExecuteBase()) return;
+		if(!ExecuteBase()) return;
 
 		if (GetBuffers()) {
 
@@ -213,7 +213,7 @@ public:
 	};
 	
 	void ExecuteOnTrade(){
-      BadRobot::ExecuteOnTradeBase();
+      ExecuteOnTradeBase();
    };
 
 };
