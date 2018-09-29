@@ -28,8 +28,6 @@ private:
 	color _corBuy;
 	color _corSell;
 	bool _isDesenhar;
-	bool _isEnviarParaTras;
-	bool _isPreencher;
 	
 	void VerifyStrategy(int order) {
 
@@ -114,8 +112,8 @@ private:
 		ObjectSetInteger(0, objName, OBJPROP_BORDER_COLOR, clrBlack);
 		ObjectSetInteger(0, objName, OBJPROP_STYLE, STYLE_SOLID);
 		ObjectSetInteger(0, objName, OBJPROP_WIDTH, 1);
-		ObjectSetInteger(0, objName, OBJPROP_BACK, _isEnviarParaTras);
-		ObjectSetInteger(0, objName, OBJPROP_FILL, _isPreencher);
+		ObjectSetInteger(0, objName, OBJPROP_BACK, true);
+		ObjectSetInteger(0, objName, OBJPROP_FILL, true);
 
 		//ARROW PRICE
 		objName = "SETA" + (string)price;
@@ -164,14 +162,6 @@ public:
 
 	void SetIsDesenhar(bool isDesenhar) {
 		_isDesenhar = isDesenhar;
-	}
-
-	void SetIsEnviarParaTras(bool isEnviarParaTras) {
-		_isEnviarParaTras = isEnviarParaTras;
-	}
-
-	void SetIsPreencher(bool isPreencher) {
-		_isPreencher = isPreencher;
 	}
 
 	void SetColorBuy(color cor) {
