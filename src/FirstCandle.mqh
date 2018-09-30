@@ -8,9 +8,9 @@
 
 #include <Trade\Trade.mqh>
 #include <Trade\PositionInfo.mqh>
-#include <BadRobot.Framework\BadRobotUI.mqh>
+#include <BadRobot.Framework\BadRobotPrompt.mqh>
 
-class FirstCandle : public BadRobotUI
+class FirstCandle : public BadRobotPrompt
 {
 private:
 	//Price   		
@@ -33,7 +33,7 @@ private:
 
 		if (order == ORDER_TYPE_BUY) {
 
-			double _entrada = _maxima + GetSpread();			
+			double _entrada = _maxima + ToPoints(GetSpread());			
 
 			if (GetLastPrice() >= _entrada) {
 
@@ -51,7 +51,7 @@ private:
 
 		if (order == ORDER_TYPE_SELL) {
 
-			double _entrada = _minima - GetSpread();
+			double _entrada = _minima - ToPoints(GetSpread());
 
 			if (GetLastPrice() <= _entrada) {
 
@@ -82,11 +82,11 @@ private:
 
 			for (int i = ArraySize(_rates) - 1; i >= 0; i--) {
 
-				if (_rates[i].high > _maxima + GetSpread() || _rates[i].low < _minima - GetSpread()) {
+				if (_rates[i].high > _maxima + ToPoints(GetSpread()) || _rates[i].low < _minima - ToPoints(GetSpread())) {
 					isMatch = false;
 				}
 
-				if (GetLastPrice() > _maxima + GetSpread() || GetLastPrice() < _minima - GetSpread()) {
+				if (GetLastPrice() > _maxima + ToPoints(GetSpread()) || GetLastPrice() < _minima - ToPoints(GetSpread())) {
 					isMatch = false;
 				}
 
@@ -175,6 +175,10 @@ public:
 	void Load() {
       LoadBase();
 	};
+	
+	void UnLoad(const int reason) {
+      UnLoadBase(reason);
+	};
 
 	void Execute() {
 
@@ -205,6 +209,11 @@ public:
 	void ExecuteOnTrade(){
       ExecuteOnTradeBase();
    };
+   
+   void ChartEvent(const int id, const long& lparam, const double& dparam, const string& sparam)
+   {      	
+		ChartEventBase(id, lparam, dparam, sparam);      	
+   };   
 
 };
 
