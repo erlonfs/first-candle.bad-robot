@@ -12,7 +12,9 @@
 
 class FirstCandle : public BadRobotPrompt
 {
+
 private:
+
 	//Price   		
 	MqlRates _rates[];
 	ENUM_TIMEFRAMES _period;
@@ -172,17 +174,7 @@ public:
 		_corSell = cor;
 	};
 
-	void Load() {
-      LoadBase();
-	};
-	
-	void UnLoad(const int reason) {
-      UnLoadBase(reason);
-	};
-
-	void Execute() {
-
-		if(!ExecuteBase()) return;
+	void OnTickHandler() {
 
 		if (GetBuffers()) {
 
@@ -203,17 +195,6 @@ public:
 			SetInfo("COMPRA " + (string)_maxima + " VENDA " + (string)_minima);
 
 		}
-
-	};
-	
-	void ExecuteOnTrade(){
-      ExecuteOnTradeBase();
-   };
-   
-   void ChartEvent(const int id, const long& lparam, const double& dparam, const string& sparam)
-   {      	
-		ChartEventBase(id, lparam, dparam, sparam);      	
-   };   
-
+	}	   
 };
 
