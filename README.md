@@ -6,6 +6,4 @@ Que tal entrar no rompimento da maxima do primeiro candle de 5min? é possivel! 
 
 ![tester_estrategy](assets/tester/first_candle_test.gif)
 
-Quer utilizar o robô e não sabe como obter o executável apenas com o código-fonte? Entre em contato através do email erlon.efs@gmail.com para fornece-lo. E bons trades!
-
 
